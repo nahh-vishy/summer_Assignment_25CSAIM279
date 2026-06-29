@@ -1,0 +1,29 @@
+
+#include <stdio.h>
+
+int main() {
+    int a[10][10], n;
+    int i, j;
+    int primarySum = 0, secondarySum = 0;
+
+    printf("Enter the order of the square matrix: ");
+    scanf("%d", &n);
+
+    printf("Enter the elements of the matrix:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    // Find diagonal sums
+    for (i = 0; i < n; i++) {
+        primarySum += a[i][i];
+        secondarySum += a[i][n - i - 1];
+    }
+
+    printf("Primary diagonal sum = %d\n", primarySum);
+    printf("Secondary diagonal sum = %d\n", secondarySum);
+
+    return 0;
+}

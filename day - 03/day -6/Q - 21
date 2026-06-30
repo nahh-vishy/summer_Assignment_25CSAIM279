@@ -23,5 +23,4 @@ int main() {
         printf("%d", binary[j]);
     }
 
-    return 0;
-}
+    return 0

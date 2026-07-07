@@ -1,0 +1,99 @@
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 100
+
+struct Contact {
+    char name[50];
+    char phone[15];
+};
+
+struct Contact contact[MAX];
+int count = 0;
+
+// Function to add a contact
+void addContact() {
+    printf("\nEnter Name: ");
+    scanf("%s", contact[count].name);
+
+    printf("Enter Phone Number: ");
+    scanf("%s", contact[count].phone);
+
+    count++;
+    printf("Contact added successfully!\n");
+}
+
+// Function to display all contacts
+void displayContacts() {
+    int i;
+
+    if (count == 0) {
+        printf("\nNo contacts found.\n");
+        return;
+    }
+
+    printf("\n===== Contact List =====\n");
+    printf("Name\t\tPhone Number\n");
+    printf("---------------------------------\n");
+
+    for (i = 0; i < count; i++) {
+        printf("%s\t\t%s\n", contact[i].name, contact[i].phone);
+    }
+}
+
+// Function to search a contact
+void searchContact() {
+    char name[50];
+    int i, found = 0;
+
+    printf("\nEnter Name to Search: ");
+    scanf("%s", name);
+
+    for (i = 0; i < count; i++) {
+        if (strcmp(contact[i].name, name) == 0) {
+            printf("\nContact Found!\n");
+            printf("Name : %s\n", contact[i].name);
+            printf("Phone: %s\n", contact[i].phone);
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found)
+        printf("Contact not found.\n");
+}
+
+int main() {
+    int choice;
+
+    do {
+        printf("\n===== Contact Management System =====\n");
+        printf("1. Add Contact\n");
+        printf("2. Display Contacts\n");
+        printf("3. Search Contact\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addContact();
+                break;
+            case 2:
+                displayContacts();
+                break;
+            case 3:
+                searchContact();
+                break;
+            case 4:
+                printf("Exiting program...\n");
+                break;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}

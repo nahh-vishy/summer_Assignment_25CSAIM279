@@ -1,0 +1,97 @@
+
+#include <stdio.h>
+
+struct BankAccount {
+    int accountNo;
+    char name[50];
+    float balance;
+};
+
+struct BankAccount acc;
+
+// Function to create account
+void createAccount() {
+    printf("\nEnter Account Number: ");
+    scanf("%d", &acc.accountNo);
+
+    printf("Enter Account Holder Name: ");
+    scanf("%s", acc.name);
+
+    printf("Enter Initial Balance: ");
+    scanf("%f", &acc.balance);
+
+    printf("Account created successfully!\n");
+}
+
+// Function to deposit money
+void deposit() {
+    float amount;
+
+    printf("\nEnter Amount to Deposit: ");
+    scanf("%f", &amount);
+
+    acc.balance += amount;
+
+    printf("Amount deposited successfully!\n");
+}
+
+// Function to withdraw money
+void withdraw() {
+    float amount;
+
+    printf("\nEnter Amount to Withdraw: ");
+    scanf("%f", &amount);
+
+    if (amount <= acc.balance) {
+        acc.balance -= amount;
+        printf("Amount withdrawn successfully!\n");
+    } else {
+        printf("Insufficient Balance!\n");
+    }
+}
+
+// Function to display account details
+void displayAccount() {
+    printf("\n===== Account Details =====\n");
+    printf("Account Number : %d\n", acc.accountNo);
+    printf("Account Holder : %s\n", acc.name);
+    printf("Balance        : %.2f\n", acc.balance);
+}
+
+int main() {
+    int choice;
+
+    do {
+        printf("\n===== Bank Account Management System =====\n");
+        printf("1. Create Account\n");
+        printf("2. Deposit Money\n");
+        printf("3. Withdraw Money\n");
+        printf("4. Display Account Details\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                createAccount();
+                break;
+            case 2:
+                deposit();
+                break;
+            case 3:
+                withdraw();
+                break;
+            case 4:
+                displayAccount();
+                break;
+            case 5:
+                printf("Exiting program...\n");
+                break;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}

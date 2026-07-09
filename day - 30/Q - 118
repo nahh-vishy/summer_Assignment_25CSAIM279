@@ -1,0 +1,32 @@
+
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    char title[50][50];
+    char author[50][50];
+
+    printf("Enter the number of books: ");
+    scanf("%d", &n);
+
+    // Input book details
+    for(i = 0; i < n; i++) {
+        printf("\nBook %d\n", i + 1);
+
+        printf("Enter Book Title: ");
+        scanf(" %[^\n]", title[i]);
+
+        printf("Enter Author Name: ");
+        scanf(" %[^\n]", author[i]);
+    }
+
+    // Display library records
+    printf("\n----- Library Records -----\n");
+    printf("Book Title\t\tAuthor\n");
+
+    for(i = 0; i < n; i++) {
+        printf("%-20s %-20s\n", title[i], author[i]);
+    }
+
+    return 0;
+}
